@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Strawman::Application.config.secret_key_base = 'ac7ff66235240f23d11ace629353737f64cd241ace0a3ed33a320ee6d6e20ae537a4bbc552972fdd88014d9a0ffd1cd44ebbf699c4e065ed34c5563190cc7894'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    #  Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Strawman::Application.config.secret_key_base = secure_token
