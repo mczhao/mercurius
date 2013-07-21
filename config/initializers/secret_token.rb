@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-Strawman::Application.config.secret_key_base = secure_token
+Mercurius::Application.config.secret_key_base = secure_token
