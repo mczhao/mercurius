@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 
 gem 'bootstrap-sass', '2.3.2.0'
 
+gem 'bcrypt-ruby', '3.0.1'
+
 gem 'rb-readline', '0.5.0', :require => 'readline'
 
 # Use sqlite3 as the database for Active Record
